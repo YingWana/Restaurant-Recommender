@@ -1,4 +1,4 @@
-# SBERT-Enhanced Deep Neural Learning-to-Rank Model for Restaurant Recommendations
+# A Deep Learning-to-Rank Framework for Restaurant Recommendations Using SBERT and Yelp Data
 
 ## Project Overview
 
