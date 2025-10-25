@@ -20,8 +20,8 @@ A subsequent **Maximal Marginal Relevance (MMR)** stage is applied to promote di
 * **Ranking Models:**  
   A **dual-model framework** is implemented for empirical comparison:
   * **Baseline:** Ordinary Least Squares (OLS) regression estimating explicit weights for the linear score:
- 
-    $\mathbf{R}_{\text{Linear}}$ = $w_1\mathbf{X}_{\text{sim}}$ + $w_2\mathbf{X}_{\text{sent}}$ + $w_3\mathbf{X}_{\text{pop}}$
+    
+     $$\mathbf{R}_{\text{Linear}} = w_1\mathbf{X}_{\text{sim}} + w_2\mathbf{X}_{\text{sent}} + w_3\mathbf{X}_{\text{pop}}$$
 
   * **Non-Linear Ranker:** A **pointwise Deep Neural Network (DNN)** trained on a regression objective ($\mathbf{Y}$), optimizing via stochastic gradient descent to learn non-linear interactions among features.
 
