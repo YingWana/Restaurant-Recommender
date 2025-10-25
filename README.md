@@ -6,6 +6,7 @@ This repository contains the complete implementation and analysis for the **CS 4
 The work develops a **hybrid recommender system** addressing the *cold-start problem* by integrating textual semantics, sentiment, and popularity-based features into a unified **Deep Neural Network (DNN) Learning-to-Rank (LTR)** framework.
 
 The core contribution lies in replacing a fixed linear scoring mechanism with a **non-linear DNN ranker** that adaptively learns feature interactions from data.  
+
 This enables more accurate and context-aware recommendations compared to the **Ordinary Least Squares (OLS)** baseline model.  
 A subsequent **Maximal Marginal Relevance (MMR)** stage is applied to promote diversity among highly ranked items, ensuring both precision and novelty in final recommendations.
 
@@ -142,6 +143,7 @@ python src/evaluate_mmr.py --lambda 0.7
 ├── **vectors/**
 │   └── sbert_vectors_vR.npy         # Stores all pre-calculated SBERT vectors (vR)
 │
+├──.gitignore                        # Files and directories excluded from the repository.
 ├── requirements.txt                 # Stores final w1, w2, w3 coefficients.
 └── README.md
 ```
