@@ -10,16 +10,15 @@ This enables more accurate and context-aware recommendations compared to the **O
 A subsequent **Maximal Marginal Relevance (MMR)** stage is applied to promote diversity among highly ranked items, ensuring both precision and novelty in final recommendations.
 
 ### Methodology
-
+ 
 * **Input Features ($\mathbf{X}$):**  
-  $\mathbf{X}_{\text{sim}}$ – SBERT-derived cosine similarity representing semantic closeness between restaurant reviews.  
-  $\mathbf{X}_{\text{sent}}$ – VADER sentiment polarity aggregated at the business level.  
-  $\mathbf{X}_{\text{pop}}$ – Composite popularity metric combining average star rating and log-transformed review count to stabilize scale variance.
-
+  * $\mathbf{X}_{\text{sim}}$ – SBERT-derived cosine similarity representing semantic closeness between restaurant reviews.  
+  * $\mathbf{X}_{\text{sent}}$ – VADER sentiment polarity aggregated at the business level.  
+  * $\mathbf{X}_{\text{pop}}$ – Composite popularity metric combining average star rating and log-transformed review count to stabilize scale variance.
 
 * **Ranking Models:**  
   A **dual-model framework** is implemented for empirical comparison:  
-  - **Baseline:** Ordinary Least Squares (OLS) regression estimating explicit weights for $\mathbf{R}_{\text{Linear}} = w_1X_{\text{sim}} + w_2X_{\text{sent}} + w_3X_{\text{pop}}$.  
+  - **Baseline:** Ordinary Least Squares (OLS) regression estimating explicit weights for $$\mathbf{R}_{\text{Linear}} = w_1\mathbf{X}_{\text{sim}} + w_2\mathbf{X}_{\text{sent}} + w_3\mathbf{X}_{\text{pop}}$$ 
   - **Non-Linear Ranker:** A **pointwise Deep Neural Network (DNN)** trained on a regression objective ($\mathbf{Y}$), optimizing via stochastic gradient descent to learn non-linear interactions among features.
 
 * **Target Label ($\mathbf{Y}$):**  
@@ -112,37 +111,40 @@ python src/evaluate_mmr.py --lambda 0.7
 ## Project Structure
 
 ## Restaurant-Recommender/
-│
+
+```text
+.
 ├── **data/**
 │   │
 │   └── **processed/**
-│       ├── yelp_restaurant_florida_reviews.csv   # Unified, Cleaned, Filtered Data (Table 1)
-│       └── feature_matrix_X_Y.csv # Final DNN Training Matrix 
+│       ├── yelp_restaurant_florida_reviews.csv   # Unified, Cleaned, Filtered Data 
+│       └── feature_matrix_X_Y.csv                # Final DNN Training Matrix 
 │
 ├── **notebooks/**
-│   ├── yelp_clean.ipynb         # Data cleaning and Exploratory Data Analysis (EDA)
-│   └── model_analysis.ipynb # Visualization of SHAP/MMR/Feature Importance
+│   ├── yelp_clean.ipynb             # Data cleaning and Exploratory Data Analysis (EDA)
+│   └── model_analysis.ipynb         # Visualization of SHAP/MMR/Feature 
 │
 ├── **src/**
-│   ├── extract_yelp_data.py
-│   ├── features.py** # Utility script for calculating Y, Sent, Pop features
-│   ├── baseline_ols.py
-│   ├── train_dnn_ltr.py
-│   ├── evaluate_mmr.py
+│   ├── extract_yelp_data.py         # Script to extract and filter Yelp data.
+│   ├── features.py**                # Utility script for calculating Y, Sent, Pop features.
+│   ├── baseline_ols.py              # Compute linear baseline weights via OLS.
+│   ├── train_dnn_ltr.py             # Train Deep Neural Network Learning-to-Rank model.
+│   ├── evaluate_mmr.py              # Apply MMR re-ranking and comparative evaluation.
 │
 ├── **results/**
-│   ├── metrics_ndcg_ild.csv
-│   └── plots/
+│   ├── metrics_ndcg_ild.csv         # Evaluation metrics (NDCG@k, ILD).
+│   └── plots/                       # Visualization outputs (ranking curves, loss plots, etc.).
 │
 ├── **models/**
-│   ├── dnn_ranker.h5            # Trained DNN model weights
-│   └── linear_baseline_weights.json** # Stores final w1, w2, w3 coefficients
+│   ├── dnn_ranker.h5                # Trained DNN model weights
+│   └── linear_baseline_weights.json # Stores final w1, w2, w3 coefficients
 │
 ├── **vectors/**
-│   └── sbert_vectors_vR.npy** # Stores all pre-calculated SBERT vectors (vR)
+│   └── sbert_vectors_vR.npy         # Stores all pre-calculated SBERT vectors (vR)
 │
-├── requirements.txt
+├── requirements.txt                 # Stores final w1, w2, w3 coefficients.
 └── README.md
+```
 
 ## Project Status
 
