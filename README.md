@@ -117,32 +117,32 @@ python src/evaluate_mmr.py --lambda 0.7
 
 ```text
 .
-├── **data/**
+├── data/
 │   │
-│   └── **processed/**
+│   └── processed/
 │       ├── yelp_restaurant_florida_reviews.csv   # Unified, Cleaned, Filtered Data 
 │       └── feature_matrix_X_Y.csv                # Final DNN Training Matrix 
 │
-├── **notebooks/**
+├── notebooks/
 │   ├── yelp_clean.ipynb             # Data cleaning and Exploratory Data Analysis (EDA)
 │   └── model_analysis.ipynb         # Visualization of SHAP/MMR/Feature 
 │
-├── **src/**
+├── src/
 │   ├── extract_yelp_data.py         # Script to extract and filter Yelp data.
-│   ├── features.py**                # Utility script for calculating Y, Sent, Pop features.
+│   ├── features.py                  # Utility script for calculating Y, Sent, Pop features.
 │   ├── baseline_ols.py              # Compute linear baseline weights via OLS.
 │   ├── train_dnn_ltr.py             # Train Deep Neural Network Learning-to-Rank model.
 │   ├── evaluate_mmr.py              # Apply MMR re-ranking and comparative evaluation.
 │
-├── **results/**
+├── results/
 │   ├── metrics_ndcg_ild.csv         # Evaluation metrics (NDCG@k, ILD).
 │   └── plots/                       # Visualization outputs (ranking curves, loss plots, etc.).
 │
-├── **models/**
+├── models/
 │   ├── dnn_ranker.h5                # Trained DNN model weights
 │   └── linear_baseline_weights.json # Stores final w1, w2, w3 coefficients
 │
-├── **vectors/**
+├── vectors/
 │   └── sbert_vectors_vR.npy         # Stores all pre-calculated SBERT vectors (vR)
 │
 ├──.gitignore                        # Files and directories excluded from the repository.
