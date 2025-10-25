@@ -2,14 +2,14 @@
 
 ## Project Overview
 
-This repository contains the complete implementation and analysis for the **CS 4824: Machine Learning Capstone Project**.  
+This repository contains the full implementation and analysis for the **CS 4824: Machine Learning Capstone Project**.  
 
-The work develops a **hybrid recommender system** addressing the *cold-start problem* by integrating textual semantics, sentiment, and popularity-based features into a unified **Deep Neural Network (DNN) Learning-to-Rank (LTR)** framework.
+The work develops a **hybrid recommender system** addressing the *cold-start problem* by integrating textual **semantics, sentiment, and popularity-based features** within a unified **Deep Neural Network (DNN) Learning-to-Rank (LTR)** framework.
 
-The core contribution lies in replacing a fixed linear scoring mechanism with a **non-linear DNN ranker** that adaptively learns feature interactions from data.  
+The model replaces a fixed linear scoring function with a **non-linear DNN ranker** that learns feature interactions directly from data. 
 
 This enables more accurate and context-aware recommendations compared to the **Ordinary Least Squares (OLS)** baseline model.  
-A subsequent **Maximal Marginal Relevance (MMR)** stage is applied to promote diversity among highly ranked items, ensuring both precision and novelty in final recommendations.
+A final **Maximal Marginal Relevance (MMR)**  introduces diversity among the top-ranked results, balancing precision with novelty in the final recommendation list.
 
 ### Methodology
  
@@ -32,7 +32,7 @@ A subsequent **Maximal Marginal Relevance (MMR)** stage is applied to promote di
 * **Diversity Enhancement:**  
   Applies **Maximal Marginal Relevance (MMR)** as a post-ranking stage to balance relevance and novelty, promoting a diverse set of recommended restaurants.
 
-## Getting Started
+## Environment, Reproducibility, and Project Structure
 
 ### Prerequisites
 
@@ -68,53 +68,7 @@ pip install -r requirements.txtnstall sentence-transformers nltk requests
 pip install tensorflow==2.17.0 tensorflow-ranking==0.5.1
 pip install -r requirements.txt
 ```
-
-## Data and Preprocessing
-
-The project is based on the high-volume [**Yelp Academic Dataset**](https://business.yelp.com/data/resources/open-dataset/), comprising approximately **6.99 million reviews** and **150,346 businesses** across **11 metropolitan areas** in North America.  
-
-For experimental consistency, a geographically focused subset was extracted:
-
-* **Data Corpus:** Contains **3,066** filtered Florida-based restaurants and cafes that remain open and **588,377** aggregated reviews (filtered to include only businesses with ≥50 reviews).
-* **Processing Pipeline:** The preprocessing sequence is executed once to construct the feature matrix:
-    * **Text Aggregation:** All reviews are grouped by `business_id` to form the restaurant-level corpus $\mathbf{C}_R$.
-    * **Embedding Generation:** SBERT is applied to $\mathbf{C}_R$ to produce dense semantic vectors $\mathbf{v}_R$.
-    * **Feature Scaling:** Each feature in $\mathbf{X}$ (similarity, sentiment, popularity) is standardized using `StandardScaler` for stable training across models.
-
-## Usage and Execution
-
-The project execution is divided into three distinct phases that correspond to the methodological stages of the study.
-
-1.  **Baseline Model Derivation**
-Computes the linear baseline weights using **Ordinary Least Squares (OLS)** regression to produce the benchmark ranking function $\mathbf{R}_{\text{Linear}}$.
-
-```bash
-# Script: src/baseline_ols.py
-# Action: Calculates optimal w1, w2, w3 via OLS Regression against Y_Relevance target.
-python src/baseline_ols.py
-```
-
-2. **DNN Training and Tuning**
-Implements the **Deep Neural Network Learning-to-Rank (DNN LTR)** model, training on the standardized feature matrix ($\mathbf{X}$) using stochastic gradient descent.
-Hyperparameter tuning employs Bayesian Optimization for efficient exploration.
-
-```bash
-# Script: src/train_dnn_ltr.py
-# Purpose: Define and train the DNN/MLP ranker on (X, Y)
-# Execution: Recommended on Google Colab GPU for accelerated training
-python src/train_dnn_ltr.py
-```
-
-3. **Final Evaluation and Reranking**
-Loads both ranking models, applies the Maximal Marginal Relevance (MMR) diversity filter, and performs comparative evaluation across ranking metrics.
-
-```bash
-# Script: src/evaluate_mmr.py
-# Action: Compares R_Linear vs. R_DNN performance on NDCG@k and ILD metrics.
-# Example: Apply MMR with a relevance bias (lambda=0.7)
-python src/evaluate_mmr.py --lambda 0.7
-```
-## Project Structure
+### Project Structure
 
 ```text
 .
@@ -150,6 +104,52 @@ python src/evaluate_mmr.py --lambda 0.7
 ├── requirements.txt                 # Stores final w1, w2, w3 coefficients.
 └── README.md
 ```
+## Data and Preprocessing
+
+The project is based on the high-volume [**Yelp Academic Dataset**](https://business.yelp.com/data/resources/open-dataset/), comprising approximately **6.99 million reviews** and **150,346 businesses** across **11 metropolitan areas** in North America.  
+
+For experimental consistency, a geographically focused subset was extracted:
+
+* **Data Corpus:** Contains **3,066** filtered Florida-based restaurants and cafes that remain open and **588,377** aggregated reviews (filtered to include only businesses with ≥50 reviews).
+* **Processing Pipeline:** The preprocessing workflow is executed once to construct the feature matrix:
+    * **Text Aggregation:** All reviews are grouped by `business_id` to form the restaurant-level corpus $\mathbf{C}_R$.
+    * **Embedding Generation:** SBERT is applied to $\mathbf{C}_R$ to produce dense semantic vectors $\mathbf{v}_R$.
+    * **Feature Scaling:** Each feature in $\mathbf{X}$ (similarity, sentiment, popularity) is standardized using `StandardScaler` for stable training across models.
+
+## Usage and Execution
+
+Project execution is divided into three distinct phases that correspond to the methodological stages of the study.
+
+1.  **Baseline Model Derivation**
+Computes the linear baseline weights using **Ordinary Least Squares (OLS)** regression to produce the benchmark ranking function $\mathbf{R}_{\text{Linear}}$.
+
+```bash
+# Script: src/baseline_ols.py
+# Action: Calculates optimal w1, w2, w3 via OLS Regression against Y_Relevance target.
+python src/baseline_ols.py
+```
+
+2. **DNN Training and Tuning**
+Implements the **Deep Neural Network Learning-to-Rank (DNN LTR)** model, training on the standardized feature matrix ($\mathbf{X}$) using stochastic gradient descent.
+Hyperparameter tuning employs Bayesian Optimization for efficient exploration.
+
+```bash
+# Script: src/train_dnn_ltr.py
+# Purpose: Define and train the DNN/MLP ranker on (X, Y)
+# Execution: Recommended on Google Colab GPU for accelerated training
+python src/train_dnn_ltr.py
+```
+
+3. **Final Evaluation and Reranking**
+Loads both ranking models, applies the Maximal Marginal Relevance (MMR) diversity filter, and performs comparative evaluation across ranking metrics.
+
+```bash
+# Script: src/evaluate_mmr.py
+# Action: Compares R_Linear vs. R_DNN performance on NDCG@k and ILD metrics.
+# Example: Apply MMR with a relevance bias (lambda=0.7)
+python src/evaluate_mmr.py --lambda 0.7
+```
+
 
 ## Project Status
 
