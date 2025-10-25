@@ -16,6 +16,7 @@ A subsequent **Maximal Marginal Relevance (MMR)** stage is applied to promote di
   $\mathbf{X}_{\text{sent}}$ – VADER sentiment polarity aggregated at the business level.  
   $\mathbf{X}_{\text{pop}}$ – Composite popularity metric combining average star rating and log-transformed review count to stabilize scale variance.
 
+
 * **Ranking Models:**  
   A **dual-model framework** is implemented for empirical comparison:  
   - **Baseline:** Ordinary Least Squares (OLS) regression estimating explicit weights for $\mathbf{R}_{\text{Linear}} = w_1X_{\text{sim}} + w_2X_{\text{sent}} + w_3X_{\text{pop}}$.  
@@ -140,8 +141,8 @@ python src/evaluate_mmr.py --lambda 0.7
 ├── **vectors/**
 │   └── sbert_vectors_vR.npy** # Stores all pre-calculated SBERT vectors (vR)
 │
-├── 📄 requirements.txt
-└── 📄 README.md
+├── requirements.txt
+└── README.md
 
 ## Project Status
 
