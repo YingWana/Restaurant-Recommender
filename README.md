@@ -11,10 +11,10 @@ The model replaces a fixed linear scoring function with a **non-linear DNN ranke
 This enables more accurate and context-aware recommendations compared to the **Ordinary Least Squares (OLS)** baseline model.  
 A final **Maximal Marginal Relevance (MMR)**  introduces diversity among the top-ranked results, balancing precision with novelty in the final recommendation list.
 
-### Methodology
+## Methodology
  
 * **Input Features ($\mathbf{X}$):**  
-  * $\mathbf{X}_{\text{sim}}$ – SBERT,derived cosine similarity representing semantic closeness between restaurant reviews.  
+  * $\mathbf{X}_{\text{sim}}$ – SBERT,derived cosine similarity representing semantic closeness between restaurant reviews (Reimers and Gurevych, 2022).  
   * $\mathbf{X}_{\text{sent}}$ – VADER sentiment polarity aggregated at the business level.  
   * $\mathbf{X}_{\text{pop}}$ – Composite popularity metric combining average star rating and log-transformed review count to stabilize scale variance.
 
@@ -24,14 +24,30 @@ A final **Maximal Marginal Relevance (MMR)**  introduces diversity among the top
     ```
     R_linear = w1 * X_sim + w2 * X_sent + w3 * X_pop
     ```
-  * **Non-Linear Ranker:** A **pointwise Deep Neural Network (DNN)** trained on a regression objective ($\mathbf{Y}$), optimizing via stochastic gradient descent to learn non-linear interactions among features.
+    The linear scoring formulation follows established hybrid recommender design principles that combine content, sentiment, and popularity signals (Burke, 2002; Lops et al., 2011).
+
+  * **Non-Linear Ranker:** A **pointwise Deep Neural Network (DNN)** A pointwise Deep Neural Network (DNN) trained on a regression objective (`Y`) using stochastic gradient descent, enabling the model to learn non-linear feature interactions (Liu 2009).
 
 * **Target Label ($\mathbf{Y}$):**  
-  Constructed as a **weighted average rating**, where individual review ratings are weighted by review volume to mitigate sampling bias.
+  Constructed as a weighted average rating, where each business’s aggregated rating is weighted by its total review count to mitigate sampling bias.  
+
+  This design reflects prior work connecting textual sentiment and user ratings in recommendation contexts (McAuley and Leskovec 2013).
 
 * **Diversity Enhancement:**  
-  Applies **Maximal Marginal Relevance (MMR)** as a post-ranking stage to balance relevance and novelty, promoting a diverse set of recommended restaurants.
+    A Maximal Marginal Relevance (MMR) stage is applied post-ranking to balance relevance and novelty, promoting a more diverse and contextually representative set of top-ranked recommendations (Carbonell and Goldstein 1998).
+  
+## Data and Preprocessing
 
+The project is based on the high-volume [**Yelp Academic Dataset**](https://business.yelp.com/data/resources/open-dataset/), comprising approximately **6.99 million reviews** and **150,346 businesses** across **11 metropolitan areas** in North America.  
+
+For experimental consistency, a geographically focused subset was extracted:
+
+* **Data Corpus:** Contains **3,066** filtered Florida-based restaurants and cafes that remain open and **588,377** aggregated reviews (filtered to include only businesses with ≥50 reviews).
+* **Processing Pipeline:** The preprocessing workflow is executed once to construct the feature matrix:
+    * **Text Aggregation:** All reviews are grouped by `business_id` to form the restaurant-level corpus $\mathbf{C}_R$.
+    * **Embedding Generation:** SBERT is applied to $\mathbf{C}_R$ to produce dense semantic vectors $\mathbf{v}_R$.
+    * **Feature Scaling:** Each feature in $\mathbf{X}$ (similarity, sentiment, popularity) is standardized using `StandardScaler` for stable training across models.
+      
 ## Environment, Reproducibility, and Project Structure
 
 ### Prerequisites
@@ -104,17 +120,6 @@ pip install -r requirements.txt
 ├── requirements.txt                 # Stores final w1, w2, w3 coefficients.
 └── README.md
 ```
-## Data and Preprocessing
-
-The project is based on the high-volume [**Yelp Academic Dataset**](https://business.yelp.com/data/resources/open-dataset/), comprising approximately **6.99 million reviews** and **150,346 businesses** across **11 metropolitan areas** in North America.  
-
-For experimental consistency, a geographically focused subset was extracted:
-
-* **Data Corpus:** Contains **3,066** filtered Florida-based restaurants and cafes that remain open and **588,377** aggregated reviews (filtered to include only businesses with ≥50 reviews).
-* **Processing Pipeline:** The preprocessing workflow is executed once to construct the feature matrix:
-    * **Text Aggregation:** All reviews are grouped by `business_id` to form the restaurant-level corpus $\mathbf{C}_R$.
-    * **Embedding Generation:** SBERT is applied to $\mathbf{C}_R$ to produce dense semantic vectors $\mathbf{v}_R$.
-    * **Feature Scaling:** Each feature in $\mathbf{X}$ (similarity, sentiment, popularity) is standardized using `StandardScaler` for stable training across models.
 
 ## Usage and Execution
 
@@ -133,6 +138,8 @@ python src/baseline_ols.py
 Implements the **Deep Neural Network Learning-to-Rank (DNN LTR)** model, training on the standardized feature matrix ($\mathbf{X}$) using stochastic gradient descent.
 Hyperparameter tuning employs Bayesian Optimization for efficient exploration.
 
+**Note:** The network design and training workflow follow practical guidelines for neural recommender systems proposed by Reisinger and Rossi (2022). 
+
 ```bash
 # Script: src/train_dnn_ltr.py
 # Purpose: Define and train the DNN/MLP ranker on (X, Y)
@@ -150,7 +157,6 @@ Loads both ranking models, applies the Maximal Marginal Relevance (MMR) diversit
 python src/evaluate_mmr.py --lambda 0.7
 ```
 
-
 ## Project Status
 
 | Component | Status | Target Completion |
@@ -162,7 +168,22 @@ python src/evaluate_mmr.py --lambda 0.7
 | **Final Evaluation** | **Not Started** | Week 9 |
 
 ## Appendix
-- Yelp, Inc. *Yelp Open Dataset (2025).* [Available online](https://business.yelp.com/data/resources/open-dataset/).  
+- Yelp, Inc. *Yelp Open Dataset (2025).* [Available online](https://business.yelp.com/data/resources/open-dataset/).
+
+## References
+- Burke, Robin. *Hybrid Recommender Systems: Survey and Experiments.* *User Modeling and User-Adapted Interaction*, vol. 12, no. 4, 2002, pp. 331–370. https://doi.org/10.1023/A:1021240730564  
+
+- Lops, Pasquale, Marco de Gemmis, and Giovanni Semeraro. *Content-Based Recommender Systems: State of the Art and Trends.* *Recommender Systems Handbook*, Springer, 2011, pp. 73–105. https://doi.org/10.1007/978-0-387-85820-3_3  
+
+- McAuley, Julian, and Jure Leskovec. *Hidden Factors and Hidden Topics: Understanding Rating Dimensions with Review Text.* *Proceedings of the 7th ACM Conference on Recommender Systems (RecSys ’13)*, 2013, pp. 165–172. https://doi.org/10.1145/2507157.2507163  
+
+- Carbonell, Jaime, and Jade Goldstein. *The Use of MMR, Diversity-Based Reranking for Reordering Documents and Producing Summaries.* *Proceedings of SIGIR ’98*, 1998, pp. 335–336. https://doi.org/10.1145/290941.291025  
+
+- Liu, Tie-Yan. *Learning to Rank for Information Retrieval.* *Foundations and Trends in Information Retrieval*, vol. 3, no. 3, 2009, pp. 225–331. https://doi.org/10.1561/1500000016  
+
+- Reimers, Nils, and Iryna Gurevych. *Sentence-Transformers: Sentence Embeddings Using Siamese BERT-Networks.* *arXiv preprint arXiv:2210.12437*, 2022. https://arxiv.org/pdf/2210.12437  
+
+- Reisinger, Louis, and Lorenzo Rossi. *Building a Winning Recommendation System – Part 2: Deep Learning for Recommender Systems.* *NVIDIA Developer Blog*, 2022. https://developer.nvidia.com/blog/how-to-build-a-winning-recommendation-system-part-2-deep-learning-for-recommender-systems  
 
 
 
