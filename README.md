@@ -13,16 +13,16 @@ A subsequent **Maximal Marginal Relevance (MMR)** stage is applied to promote di
 ### Methodology
  
 * **Input Features ($\mathbf{X}$):**  
-  * $\mathbf{X}_{\text{sim}}$ – SBERT-derived cosine similarity representing semantic closeness between restaurant reviews.  
-  * $\mathbf{X}_{\text{sent}}$ – VADER sentiment polarity aggregated at the business level.  
-  * $\mathbf{X}_{\text{pop}}$ – Composite popularity metric combining average star rating and log-transformed review count to stabilize scale variance.
+  * $\mathbf{X}_{\text{sim}}$ : SBERT-derived cosine similarity representing semantic closeness between restaurant reviews.  
+  * $\mathbf{X}_{\text{sent}}$ : VADER sentiment polarity aggregated at the business level.  
+  * $\mathbf{X}_{\text{pop}}$ : Composite popularity metric combining average star rating and log-transformed review count to stabilize scale variance.
 
 * **Ranking Models:**  
   A **dual-model framework** is implemented for empirical comparison:
   * **Baseline:** Ordinary Least Squares (OLS) regression estimating explicit weights for the linear score:
-    ```
-    R_linear = w1 * X_sim + w2 * X_sent + w3 * X_pop
-    ```
+ 
+    $\mathbf{R}_{\text{Linear}}$ = $w_1\mathbf{X}_{\text{sim}}$ + $w_2\mathbf{X}_{\text{sent}}$ + $w_3\mathbf{X}_{\text{pop}}$
+
   * **Non-Linear Ranker:** A **pointwise Deep Neural Network (DNN)** trained on a regression objective ($\mathbf{Y}$), optimizing via stochastic gradient descent to learn non-linear interactions among features.
 
 * **Target Label ($\mathbf{Y}$):**  
