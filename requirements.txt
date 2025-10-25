@@ -1,0 +1,48 @@
+# =========================================================
+# Project: Restaurants Hybrid Recommender (SBERT + Sentiment + Popularity → LTR DNN + MMR)
+# Date: 10/20/2025
+# Environment: macOS (Apple Silicon M1/M2/M3) • Python 3.11
+# Reproducibility Notes:
+#   • TensorFlow on Apple Silicon requires tensorflow-macos + tensorflow-metal.
+#   • Install:
+#         1. Install the TensorFlow triplet manually first:
+#              pip install numpy==1.26.4 tensorflow-macos==2.16.2 tensorflow-metal==1.2.0
+#         2. Install TF-Ranking (ignoring CPU deps):
+#              pip install tensorflow-ranking==0.5.1 --no-deps
+#         3. Install all remaining packages:
+#              pip install -r requirements.txt
+# =========================================================
+
+# --- Dependencies ---
+requests==2.32.3
+pandas==2.2.3
+numpy==1.26.4               # NumPy ABI compatible with TF 2.16 on macOS arm64
+#tqdm==4.66.5                # Progress bars
+python-dotenv==1.0.1
+
+# --- NLP / Text Processing ---
+#nltk==3.9.1                 # Tokenization, stopwords, classic NLP tools
+#vaderSentiment==3.3.2       # Social-text sentiment
+#textblob==0.18.0.post0      # Simple sentiment & POS tagging
+#sentence-transformers==3.0.1  # SBERT embeddings
+#transformers==4.45.2        # HF models/utilities (tokenizers, pipelines)
+#spacy==3.7.5
+
+# --- Deep Learning (LTR DNN) ---
+#tensorflow-macos==2.16.2.0    # TensorFlow build for macOS arm64
+#tensorflow-metal==1.2.0
+#tensorflow-ranking==0.5.1   # Learning-to-Rank ops/losses for TF
+#keras==3.4.1
+
+# --- ML / Embeddings / Similarity ---
+#scikit-learn==1.5.2
+#scipy==1.14.1               # For MMR reranking, pairwise distance computations, and sparse matrices used with TensorFlow/SBERT embeddings
+
+# --- Visualization ---
+matplotlib==3.9.2
+seaborn==0.13.2
+plotly==5.24.0
+
+# --- Data IO / Formats ---
+openpyxl==3.1.5
+pyarrow==17.0.0
