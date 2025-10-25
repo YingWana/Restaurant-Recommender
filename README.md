@@ -23,6 +23,8 @@ A subsequent **Maximal Marginal Relevance (MMR)** stage is applied to promote di
     ```
     R_linear = w1 * X_sim + w2 * X_sent + w3 * X_pop
     ```
+    $\mathbf{R}_{\text{Linear}}$ = $\mathbf{w}_{\text{1}}$ * $\mathbf{X}_{\text{sim}}$
+    
   * **Non-Linear Ranker:** A **pointwise Deep Neural Network (DNN)** trained on a regression objective ($\mathbf{Y}$), optimizing via stochastic gradient descent to learn non-linear interactions among features.
 
 * **Target Label ($\mathbf{Y}$):**  
@@ -114,8 +116,6 @@ Loads both ranking models, applies the Maximal Marginal Relevance (MMR) diversit
 python src/evaluate_mmr.py --lambda 0.7
 ```
 ## Project Structure
-
-## Restaurant-Recommender/
 
 ```text
 .
