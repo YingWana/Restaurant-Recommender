@@ -18,9 +18,9 @@ A subsequent **Maximal Marginal Relevance (MMR)** stage is applied to promote di
   * $\mathbf{X}_{\text{pop}}$ – Composite popularity metric combining average star rating and log-transformed review count to stabilize scale variance.
 
 * **Ranking Models:**  
-  A **dual-model framework** is implemented for empirical comparison:  
-  - **Baseline:** Ordinary Least Squares (OLS) regression estimating explicit weights for $$\mathbf{R}_{\text{Linear}} = w_1\mathbf{X}_{\text{sim}} + w_2\mathbf{X}_{\text{sent}} + w_3\mathbf{X}_{\text{pop}}$$ 
-  - **Non-Linear Ranker:** A **pointwise Deep Neural Network (DNN)** trained on a regression objective ($\mathbf{Y}$), optimizing via stochastic gradient descent to learn non-linear interactions among features.
+  A **dual-model framework** is implemented for empirical comparison:
+  * **Baseline:** Ordinary Least Squares (OLS) regression estimating explicit weights for the linear score: $$\mathbf{R}_{\text{Linear}} = w_1\mathbf{X}_{\text{sim}} + w_2\mathbf{X}_{\text{sent}} + w_3\mathbf{X}_{\text{pop}}$$
+  * **Non-Linear Ranker:** A **pointwise Deep Neural Network (DNN)** trained on a regression objective ($\mathbf{Y}$), optimizing via stochastic gradient descent to learn non-linear interactions among features.
 
 * **Target Label ($\mathbf{Y}$):**  
   Constructed as a **weighted average rating**, where individual review ratings are weighted by review volume to mitigate sampling bias.
@@ -68,6 +68,7 @@ pip install -r requirements.txt
 ### Data and Preprocessing
 
 The project is based on the high-volume [**Yelp Academic Dataset**](https://business.yelp.com/data/resources/open-dataset/), comprising approximately **6.99 million reviews** and **150,346 businesses** across **11 metropolitan areas** in North America.  
+
 This corpus provides a reliable and singular foundation for reproducible feature development and large-scale recommender benchmarking.
 
 * **Data Corpus:** Contains **3,066** filtered Florida-based restaurants and cafes that remain open and **588,377** aggregated reviews.
