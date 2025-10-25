@@ -73,7 +73,7 @@ pip install -r requirements.txt
 
 The project is based on the high-volume [**Yelp Academic Dataset**](https://business.yelp.com/data/resources/open-dataset/), comprising approximately **6.99 million reviews** and **150,346 businesses** across **11 metropolitan areas** in North America.  
 
-This corpus provides a reliable and singular foundation for reproducible feature development and large-scale recommender benchmarking.
+For experimental consistency, a geographically focused subset was extracted:
 
 * **Data Corpus:** Contains **3,066** filtered Florida-based restaurants and cafes that remain open and **588,377** aggregated reviews (filtered to include only businesses with ≥50 reviews).
 * **Processing Pipeline:** The preprocessing sequence is executed once to construct the feature matrix:
