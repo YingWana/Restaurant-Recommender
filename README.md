@@ -20,6 +20,7 @@ A subsequent **Maximal Marginal Relevance (MMR)** stage is applied to promote di
 * **Ranking Models:**  
   A **dual-model framework** is implemented for empirical comparison:
   * **Baseline:** Ordinary Least Squares (OLS) regression estimating explicit weights for the linear score:
+    $\mathbf{R}_{\text{Linear}}$ = $\mathbf{X}_{\text{sim}}$ + $\mathbf{X}_{\text{sent}}$ + $\mathbf{X}_{\text{pop}}$
     ```
     R_linear = w1 * X_sim + w2 * X_sent + w3 * X_pop
     ```    
