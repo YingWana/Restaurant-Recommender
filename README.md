@@ -14,9 +14,9 @@ A final **Maximal Marginal Relevance (MMR)**  introduces diversity among the top
 ## Methodology
  
 * **Input Features ($\mathbf{X}$):**  
-  * $\mathbf{X}_{\text{sim}}$ – SBERT,derived cosine similarity representing semantic closeness between restaurant reviews (Reimers and Gurevych, 2022).  
-  * $\mathbf{X}_{\text{sent}}$ – VADER sentiment polarity aggregated at the business level.  
-  * $\mathbf{X}_{\text{pop}}$ – Composite popularity metric combining average star rating and log-transformed review count to stabilize scale variance.
+  * $\mathbf{X}_{\text{sim}}$ : SBERT,derived cosine similarity representing semantic closeness between restaurant reviews (Reimers and Gurevych, 2022).  
+  * $\mathbf{X}_{\text{sent}}$ : VADER sentiment polarity aggregated at the business level.  
+  * $\mathbf{X}_{\text{pop}}$ : Composite popularity metric combining average star rating and log-transformed review count to stabilize scale variance.
 
 * **Ranking Models:**  
   A **dual-model framework** is implemented for empirical comparison:
