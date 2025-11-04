@@ -52,7 +52,7 @@ For experimental consistency, a geographically focused subset was extracted:
 
 ### Prerequisites
 
-The computational components of this project, particularly **SBERT embedding generation** and **Deep Neural Network (DNN) training**—are optimized for GPU acceleration to ensure efficient large,scale experimentation.
+The computational components of this project, particularly **SBERT embedding generation** and **Deep Neural Network (DNN) training** are optimized for GPU acceleration to ensure efficient large,scale experimentation.
 
 * **Operating System:** macOS (Apple Silicon M1/M2/M3) or Linux. GPU acceleration on macOS leverages the **Metal Performance Shaders** backend for TensorFlow.  
 * **Recommended Environment:** [**Google Colab Pro**](https://colab.research.google.com/signup) for reproducible, GPU-accelerated training and hyperparameter tuning.  
