@@ -1,4 +1,4 @@
-# Multi-Signal Hybrid Restaurant Recommendation System
+# Multi-Signal Hybrid Restaurant Recommendation System: A Data-Centric Approach to Feature Engineering
 
 A content-based recommendation system addressing the cold-start problem in restaurant discovery. This project evolved from a simple Linear Weighted Combination to a Deep Neural Network Learning-to-Rank architecture, achieving **R² = 0.852** and **NDCG@10 = 0.974** on held-out test data.
 
