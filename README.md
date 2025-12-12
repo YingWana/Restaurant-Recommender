@@ -8,7 +8,7 @@ A content-based recommendation system addressing the cold-start problem in resta
 
 ---
 
-## 📊 Key Results
+## Key Results
 
 ### Model Performance (Test Set: n=1,627)
 
@@ -31,7 +31,7 @@ A content-based recommendation system addressing the cold-start problem in resta
 
 ### MMR Diversity Optimization
 
-| Method | NDCG@20 | ILD@20 | Δ NDCG | Δ ILD |
+| Method | NDCG | ILD | Δ NDCG | Δ ILD |
 |--------|---------|--------|--------|-------|
 | Greedy (λ=1.0) | 0.934 | 0.306 | — | — |
 | **MMR (λ=0.7)** | **0.940** | **0.394** | **+0.6%** | **+29%** |
@@ -40,7 +40,7 @@ A content-based recommendation system addressing the cold-start problem in resta
 
 ---
 
-## 🔄 Project Evolution
+## Project Evolution
 
 ### Original Proposal
 ```
@@ -62,7 +62,7 @@ R_DNN = f_DNN(X; θ)  where X ∈ ℝ³⁶
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -82,7 +82,7 @@ R_DNN = f_DNN(X; θ)  where X ∈ ℝ³⁶
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 restaurant-recommender/
@@ -118,7 +118,7 @@ restaurant-recommender/
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Option 1: Run with Pre-processed Data (Recommended)
 
@@ -152,7 +152,7 @@ drive.mount('/content/drive')
 
 ---
 
-## 🔬 Feature Engineering
+## Feature Engineering
 
 ### 36-Feature Summary
 
@@ -177,7 +177,7 @@ This design explains minimal training ablation impact (ΔR² = -0.0009) alongsid
 
 ---
 
-## 📊 Dataset
+## Dataset
 
 | Metric | Value |
 |--------|-------|
@@ -193,7 +193,7 @@ This design explains minimal training ablation impact (ΔR² = -0.0009) alongsid
 
 ---
 
-## 📦 Requirements
+## Requirements
 
 ```
 pandas>=2.0
@@ -220,7 +220,7 @@ pip install tensorflow-macos tensorflow-metal
 
 ---
 
-## 📚 References
+## References
 
 | # | Citation |
 |---|----------|
@@ -235,7 +235,7 @@ pip install tensorflow-macos tensorflow-metal
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 ### AI Tool Usage Disclosure
 
@@ -257,4 +257,4 @@ This usage complies with academic integrity policies regarding AI tools as assis
 
 ## 📄 License
 
-MIT License — see [LICENSE](LICENSE) for details.
+MIT License - see [LICENSE](LICENSE) for details.
