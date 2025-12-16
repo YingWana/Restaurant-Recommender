@@ -46,7 +46,7 @@ restaurant-recommender/
 │   ├── config.py               # Central configuration (Not included)
 │   ├── 01_yelp_etl.py          # Data extraction 
 │   ├── 02_spatial_etl.py       # Spatial clustering 
-│   ├── 03_sentiment.py         # Hybrid VADER + Transformer pipeline
+│   ├── 03_sentiment.py         # [Redacted] Hybrid VADER + Transformer pipeline
 │   ├── 04_sbert.py             # [Redacted] Hierarchical SBERT Chunking implementation
 │   ├── 05_similarity_pop.py    # [Redacted] Semantic similarity matrix computation
 │   ├── 06_feature_builder.py   # [Redacted] Final feature vector assembly (36-dim)
