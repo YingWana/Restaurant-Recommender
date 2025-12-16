@@ -38,7 +38,7 @@ The DNN learns that users prefer "safe" restaurants with consistent, positively-
 ---
 
 ## Repository Structure
-**Note:** Core feature engineering and NLP pipelines (`03` through `06`) have been redacted from this public release due to **Intellectual Property (IP) protection.** status. The remaining scripts demonstrate the data ingestion, model training, and evaluation infrastructure.
+**Note:** Core feature engineering and NLP pipelines (`03` through `06`) have been redacted from this public release. The remaining scripts demonstrate the data ingestion, model training, and evaluation infrastructure.
 
 ```
 restaurant-recommender/
@@ -46,7 +46,7 @@ restaurant-recommender/
 │   ├── config.py               # Central configuration (Not included)
 │   ├── 01_yelp_etl.py          # Data extraction 
 │   ├── 02_spatial_etl.py       # Spatial clustering 
-│   ├── 03_sentiment.py         # [Redacted] Hybrid VADER + Transformer pipeline
+│   ├── 03_sentiment.py         # Hybrid VADER + Transformer pipeline
 │   ├── 04_sbert.py             # [Redacted] Hierarchical SBERT Chunking implementation
 │   ├── 05_similarity_pop.py    # [Redacted] Semantic similarity matrix computation
 │   ├── 06_feature_builder.py   # [Redacted] Final feature vector assembly (36-dim)
