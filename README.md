@@ -38,7 +38,7 @@ The DNN learns that users prefer "safe" restaurants with consistent, positively-
 ---
 
 ## Repository Structure
-**Note:** Core feature engineering and NLP pipelines (`03` through `06`) have been redacted from this public release. The remaining scripts demonstrate the data ingestion, model training, and evaluation infrastructure.
+**Note:** Core feature engineering and NLP pipelines (03–06) have been intentionally redacted from this public release to protect proprietary methods. The remaining scripts demonstrate the data ingestion, model training, and evaluation infrastructure.
 
 ```
 restaurant-recommender/
