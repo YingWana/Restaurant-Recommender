@@ -32,7 +32,8 @@ This project demonstrate that **providing distributional sentiment features (mea
 
 The DNN learns that users prefer "safe" restaurants with consistent, positively-skewed review distributions. High variance indicates inconsistent experiences; negative skewness reveals hidden problems through occasional very negative reviews. This pattern mirrors financial risk modeling where investors penalize variance and negative skewness.
 
-
+![NDCG@10 Ablation Analysis](figures/ndcg_ablation_analysis.png)
+![MMR comparison](/figures/mmr_comparison.png)
 ---
 
 ## Repository Structure
