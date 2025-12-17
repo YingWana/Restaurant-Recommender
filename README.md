@@ -1,6 +1,6 @@
 # Multi-Signal Hybrid Recommendation System with Semantic Understanding and Diversity-Aware Re-Ranking for Restaurant Discovery: A Data-Centric AI Approach
 
-**A Data-Centric AI Approach** to content-based recommendation with semantic understanding and diversity-aware re-ranking, achieving **R²=0.853** and **NDCG@10=0.961** on 10,841 restaurants with 2.39M reviews.
+**A Data-Centric AI Approach** to content-based recommendation with semantic understanding and diversity-aware re-ranking, achieving **R²=0.853** and **NDCG@10=0.961** on 10,841 restaurants with 2.39M reviews. This pattern mirrors **financial risk modeling** where investors penalize variance and negative skewness.
 
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-blue.svg)](https://python.org)
 [![TensorFlow 2.16](https://img.shields.io/badge/TensorFlow-2.16-orange.svg)](https://tensorflow.org)
@@ -30,7 +30,7 @@ This project demonstrate that **providing distributional sentiment features (mea
 
 #### Feature Importance Analysis (Normalized to X_sent_mean = 1.0)
 
-The DNN learns that users prefer "safe" restaurants with consistent, positively-skewed review distributions. High variance indicates inconsistent experiences; negative skewness reveals hidden problems through occasional very negative reviews. This pattern mirrors financial risk modeling where investors penalize variance and negative skewness.
+The DNN learns that users prefer "safe" restaurants with consistent, positively-skewed review distributions. High variance indicates inconsistent experiences; negative skewness reveals hidden problems through occasional very negative reviews. 
 
 ![NDCG@10 Ablation Analysis](figures/ndcg_ablation_analysis.png)
 ![MMR comparison](/figures/mmr_comparison.png)
