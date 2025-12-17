@@ -21,8 +21,6 @@
 **Why NDCG = 0.974?**  
 Aggregated sentiment (X_sent_mean) correlates r=0.90 with aggregated star ratings because both measure customer satisfaction. This is the intended design for cold-start scenarios, not data leakage.
 
-**For personalized recommendations**, future work would exclude target user reviews and model individual preferences—a harder task with expected NDCG of 0.4-0.6.
-
 ---
 
 ## Key Results
