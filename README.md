@@ -104,7 +104,12 @@ drive.mount('/content/drive')
 !pip install -q xgboost sentence-transformers vaderSentiment
 !python run_models.py
 ```
+**Note:** This project was developed and tested using **Google Colab** with the following configuration:
 
+- **Runtime type:** Python 3  
+- **Hardware accelerator:** NVIDIA T4 GPU  
+- **RAM:** High-RAM runtime  
+- **Runtime version:** Latest available at execution time
 ---
 
 ## Feature Engineering
@@ -142,18 +147,37 @@ drive.mount('/content/drive')
 ## Requirements
 
 ```
-pandas>=2.0
-numpy>=1.26
-scikit-learn>=1.5
-xgboost>=2.1
-tensorflow>=2.16
-sentence-transformers>=3.0
-vaderSentiment>=3.3
-scipy>=1.11
-matplotlib>=3.8
-tqdm>=4.66
-joblib>=1.3
-pyarrow>=14.0
+# --- Core Data Science ---
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.14.1
+
+# --- Machine Learning ---
+scikit-learn==1.5.2
+xgboost==2.1.1
+
+# --- Deep Learning ---
+# For standard systems:
+tensorflow>=2.16.0
+# For Apple Silicon, replace with:
+# tensorflow-macos==2.16.2
+# tensorflow-metal==1.2.0
+
+# --- NLP ---
+nltk==3.9.1
+vaderSentiment==3.3.2
+sentence-transformers==3.0.1
+transformers==4.45.2
+torch>=2.0.0
+
+# --- Visualization ---
+matplotlib==3.9.2
+seaborn==0.13.2
+
+# --- Utilities ---
+tqdm==4.66.5
+joblib>=1.3.0
+pyarrow>=14.0.0
 ```
 
 <details>
