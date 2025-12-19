@@ -74,7 +74,7 @@ restaurant-recommender/
 
 ## Quick Start
 
-### Option 1: Run with Pre-processed Data (Recommended)
+### Option 1: Run with Pre-processed Data 
 
 ```bash
 # Clone repository
@@ -92,7 +92,7 @@ pip install -r requirements.txt
 python run_models.py
 ```
 
-### Option 2: Google Colab
+### Option 2: Google Colab (Recommended)
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YourUsername/restaurant-recommender/blob/main/run_Models.ipynb)
 
