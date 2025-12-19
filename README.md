@@ -1,4 +1,4 @@
-# Multi-Signal Hybrid Recommendation System with Semantic Understanding and Diversity-Aware Re-Ranking for Restaurant Discovery: A Data-Centric AI Approach
+# Content-Based Restaurant Recommender: SBERT,XGBoost & MMR Pipeline     
 
 **A Data-Centric AI Approach** to content-based recommendation with semantic understanding and diversity-aware re-ranking, achieving **R²=0.853** and **NDCG@10=0.961** on 10,841 restaurants with 2.39M reviews. This pattern mirrors **financial risk modeling** where investors penalize variance and negative skewness.
 
