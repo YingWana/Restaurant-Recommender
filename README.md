@@ -69,7 +69,7 @@ restaurant-recommender/
 
 ```bash
 # Clone repository
-git clone https://github.com/YourUsername/restaurant-recommender.git
+git clone https://github.com/YingWana/Restaurant-Recommender.git
 cd restaurant-recommender
 
 # Create virtual environment
