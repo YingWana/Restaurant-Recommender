@@ -7,7 +7,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
-⚠️ Important: Task Scope Clarification
+⚠️ **Important: Task Scope Clarification**
+
 **Why NDCG = 0.974?**  
 Aggregated sentiment (X_sent_mean) correlates r=0.90 with aggregated star ratings because both measure customer satisfaction. This is the intended design for cold-start scenarios, not data leakage.
 
