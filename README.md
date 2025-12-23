@@ -8,16 +8,6 @@
 
 ---
 ⚠️ Important: Task Scope Clarification
-
-**This is a restaurant QUALITY RANKING system, not a personalized recommender. The use-case to be a Cold-Start Recommendation engine for new users, where this 'Global Quality' signal is exactly need.**
-
-| Aspect | This System | Personalized Recommender |
-|--------|-------------|--------------------------|
-| **Predicts** | Aggregate restaurant quality | Individual user preferences |
-| **Target** | Restaurant's overall star rating | "Will User X like Restaurant Y?" |
-| **NDCG Range** | 0.9+ (expected for this task) | 0.4-0.6 (human behavior is noisy) |
-| **Cold-Start** | ✅ Solves it | ❌ Requires user history |
-
 **Why NDCG = 0.974?**  
 Aggregated sentiment (X_sent_mean) correlates r=0.90 with aggregated star ratings because both measure customer satisfaction. This is the intended design for cold-start scenarios, not data leakage.
 
