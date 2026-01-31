@@ -201,7 +201,7 @@ pip install tensorflow-macos tensorflow-metal
 
 The author acknowledges the use of AI-assisted tools during development:
 
-- **Claude (Anthropic)** and **Gemini (Google)**: Used for code debugging, structural suggestions, and accuracy verification
+- **Claude (Anthropic)** and **Gemini (Google)**: Used for code debugging and structural suggestions.
 - All AI-generated suggestions were reviewed, validated, and modified by the author
 - The research design, methodology, analysis, and conclusions represent the original work of the author
 
