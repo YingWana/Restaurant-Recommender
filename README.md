@@ -28,7 +28,6 @@ The DNN learns that users prefer "safe" restaurants with consistent, positively-
 ---
 
 ## Repository Structure
-**Note:** Core feature engineering and NLP pipelines (03–06) have been intentionally redacted from this public release to protect proprietary methods. The remaining scripts demonstrate the data ingestion, model training, and evaluation infrastructure.
 
 ```
 restaurant-recommender/
@@ -36,10 +35,10 @@ restaurant-recommender/
 │   ├── config.py               # Central configuration (Not included)
 │   ├── 01_yelp_etl.py          # Data extraction 
 │   ├── 02_spatial_etl.py       # Spatial clustering 
-│   ├── 03_sentiment.py         # [Redacted] Hybrid VADER + Transformer pipeline
-│   ├── 04_sbert.py             # [Redacted] Hierarchical SBERT Chunking implementation
-│   ├── 05_similarity_pop.py    # [Redacted] Semantic similarity matrix computation
-│   ├── 06_feature_builder.py   # [Redacted] Final feature vector assembly (36-dim)
+│   ├── 03_sentiment.py         # Hybrid VADER + Transformer pipeline
+│   ├── 04_sbert.py             # Hierarchical SBERT Chunking implementation
+│   ├── 05_similarity_pop.py    # Semantic similarity matrix computation
+│   ├── 06_feature_builder.py   # Final feature vector assembly (36-dim)
 │   ├── 07_model_training.py    # Model training
 │   ├── 08_ablation.py          # Ablation study
 │   └── 09_mmr.py               # MMR evaluation
@@ -195,17 +194,6 @@ pip install tensorflow-macos tensorflow-metal
 
 ---
 
-## Acknowledgments
-
-### AI Tool Usage Disclosure
-
-The author acknowledges the use of AI-assisted tools during development:
-
-- **Claude (Anthropic)** and **Gemini (Google)**: Used for code debugging and structural suggestions.
-- All AI-generated suggestions were reviewed, validated, and modified by the author
-- The research design, methodology, analysis, and conclusions represent the original work of the author
-
-This usage complies with academic integrity policies regarding AI tools as assistive technology.
 
 ### Additional Acknowledgments
 
