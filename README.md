@@ -2,8 +2,8 @@
 
 **A Data-Centric AI Approach** to content-based recommendation with semantic understanding and diversity-aware re-ranking, achieving **R²=0.853** and **NDCG@10=0.961** on 10,841 restaurants with 2.39M reviews. This pattern mirrors **financial risk modeling** where investors penalize variance and negative skewness.
 
-## Presentation Slides
-- [View the presentation slides](https://express.adobe.com/publishedV2/urn:aaid:sc:US:5931b6bc-060c-475f-808e-57628f2de276?promoid=Y69SGM5H&mv=other)
+## Presentation Slides 
+[View the presentation slides](https://express.adobe.com/publishedV2/urn:aaid:sc:US:5931b6bc-060c-475f-808e-57628f2de276?promoid=Y69SGM5H&mv=other)
 
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-blue.svg)](https://python.org)
 [![TensorFlow 2.16](https://img.shields.io/badge/TensorFlow-2.16-orange.svg)](https://tensorflow.org)
