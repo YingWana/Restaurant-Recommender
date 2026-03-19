@@ -209,4 +209,4 @@ pip install tensorflow-macos tensorflow-metal
 ## 📄 License
 
 License - see [LICENSE](LICENSE) for details.
-Copyright © 2025 Ying Wanapagron. All Rights Reserved.
+Copyright © 2025 Ying Wana. All Rights Reserved.
