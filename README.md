@@ -1,7 +1,5 @@
 # Content-Based Restaurant Recommender: SBERT,XGBoost & MMR Pipeline     
 
-**A Data-Centric AI Approach** to content-based recommendation with semantic understanding and diversity-aware re-ranking, achieving **R²=0.853** and **NDCG@10=0.961** on 10,841 restaurants with 2.39M reviews. This pattern mirrors **financial risk modeling** where investors penalize variance and negative skewness.
-
 ## Presentation Slides 
 [View the presentation slides](https://express.adobe.com/publishedV2/urn:aaid:sc:US:5931b6bc-060c-475f-808e-57628f2de276?promoid=Y69SGM5H&mv=other)
 
@@ -9,25 +7,6 @@
 [![TensorFlow 2.16](https://img.shields.io/badge/TensorFlow-2.16-orange.svg)](https://tensorflow.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
----
-⚠️ **Important: Task Scope Clarification**
-
-**Why NDCG = 0.974?**  
-Aggregated sentiment (X_sent_mean) correlates r=0.90 with aggregated star ratings because both measure customer satisfaction. This is the intended design for cold-start scenarios, not data leakage.
-
----
-
-## Key Results
-### DNNs Learn Risk-Aware Ranking from Distributional Sentiment
-
-This project demonstrate that **providing distributional sentiment features (mean, std, skewness) enables neural networks to learn nonlinear quality patterns** that improve ranking (NDCG) without improving point prediction (R²).
-
-#### Feature Importance Analysis (Normalized to X_sent_mean = 1.0)
-
-The DNN learns that users prefer "safe" restaurants with consistent, positively-skewed review distributions. High variance indicates inconsistent experiences; negative skewness reveals hidden problems through occasional very negative reviews. 
-
-![NDCG@10 Ablation Analysis](figures/ndcg_ablation_analysis.png)
-![MMR comparison](/figures/mmr_comparison.png)
 ---
 
 ## Repository Structure
